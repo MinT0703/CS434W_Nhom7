@@ -5,55 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Đăng nhập — Store</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --primary:#D24B62; --pastel:#F5C9D0; --pastel-2:#F9E1E5;
-      --text:#555; --muted:#8C6F74; --white:#fff;
-      --radius:18px; --container:420px;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:"Montserrat",system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:linear-gradient(135deg,var(--pastel),var(--pastel-2));color:var(--text)}
-    a{color:var(--primary);text-decoration:none}
-    .shell{min-height:100svh;display:grid;place-items:center;padding:20px}
-    .card{
-      width:100%;max-width:var(--container);background:#fff;border-radius:var(--radius);
-      box-shadow:0 24px 60px rgba(210,75,98,.15);overflow:hidden;border:1px solid rgba(0,0,0,.06)
-    }
-    .brand{
-      display:flex;align-items:center;gap:10px;padding:18px 22px;border-bottom:1px solid rgba(0,0,0,.06);background:#fff
-    }
-    .logo{font-family:"Playfair Display",serif;font-weight:900;color:var(--primary);font-size:26px}
-    .content{padding:22px}
-    h1{margin:0 0 8px;font-family:"Playfair Display",serif;font-weight:900;color:#222;text-align: center;}
-    .sub{margin:0 0 18px;color:var(--muted);text-align: center;}
-    form{display:grid;gap:14px}
-    .field{display:grid;gap:8px}
-    label{font-weight:600;font-size:14px}
-    input[type="email"],input[type="password"]{
-      width:100%;height:46px;padding:0 12px;border:1px solid rgba(0,0,0,.12);border-radius:10px;font-size:14px
-    }
-    .row{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .btn{
-      width:100%;height:46px;border:none;border-radius:10px;background:var(--primary);color:#fff;
-      font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;box-shadow:0 10px 26px rgba(210,75,98,.25)
-    }
-    .or{display:flex;align-items:center;gap:10px;color:#999;font-size:12px;margin:4px 0}
-    .or::before,.or::after{content:"";height:1px;background:#eee;flex:1}
-    .sso{display:grid;gap:10px}
-    .sso button{
-      height:44px;border:1px solid #eee;background:#fff;border-radius:10px;font-weight:700;cursor:pointer
-    }
-    .foot{
-      padding:16px 22px;background:#fff;border-top:1px solid rgba(0,0,0,.06);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;text-align: center;
-    }
-    .back{color:#7d5b5b}
-    .toggle{
-      position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#999
-    }
-    .pwd-wrap{position:relative}
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="page-auth">
   <div class="shell">
     <div class="card">
       <div class="brand">
