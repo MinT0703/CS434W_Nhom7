@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chi tiết sản phẩm — Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-detail">
+  <!-- Header -->
+  <header>
+    <div class="container header-row">
+      <div class="logo"><a href="index.html">store</a></div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Trang chủ</a></li>
+          <li><a href="product.html">Sản phẩm</a></li>
+          <li><a href="login.html">Đăng nhập</a></li>
+          <li><a href="register.html">Đăng ký</a></li>
+        </ul>
+      </nav>
+      <a class="icon-btn" href="cart.html" aria-label="Giỏ hàng">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 7h10l1.5 13H5.5L7 7Z" stroke="currentColor" stroke-width="1.6"/><path d="M9 9V6a3 3 0 1 1 6 0v3" stroke="currentColor" stroke-width="1.6"/></svg>
+        <span id="cart-badge" class="badge">0</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="crumbs"><a href="index.html">Home</a> / <a href="product.html">Sản phẩm</a> / <b>Skinny Jeans Aurora</b></div>
+
+    <section class="wrap">
+      <!-- Gallery -->
+      <div class="gallery">
+        <div class="stage" id="stage">
+          <div class="off" id="off-badge">-25%</div>
+        </div>
+        <div class="thumbs" id="thumbs"></div>
+      </div>
+
+      <!-- Content -->
+      <div class="content">
+        <h1 class="title" id="p-name">Skinny Jeans Aurora</h1>
+        <div class="rating" id="rating">
+          <span id="stars">★★★★☆</span>
+          <small>(124 đánh giá)</small>
+        </div>
+
+        <div class="price">
+          <div class="now" id="p-price">599.000đ</div>
+          <div class="old" id="p-old">799.000đ</div>
+          <span class="stock" id="p-stock">Còn: 12</span>
+        </div>
+
+        <div class="opt">
+          <div class="label">Màu sắc</div>
+          <div class="colors" id="color-list"></div>
+        </div>
+        <div class="opt">
+          <div class="label">Kích cỡ</div>
+          <div class="sizes" id="size-list"></div>
+        </div>
+
+        <div class="qty-row">
+          <div class="qty">
+            <button id="minus">−</button>
+            <input id="qty" type="number" value="1" min="1">
+            <button id="plus">+</button>
+          </div>
+          <button class="btn" id="add">Add to cart</button>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+          <div class="tab-nav">
+            <button class="tab-btn active" data-tab="desc">Mô tả</button>
+            <button class="tab-btn" data-tab="spec">Thông số</button>
+            <button class="tab-btn" data-tab="rev">Đánh giá</button>
+          </div>
+          <div class="tab-pane active" id="tab-desc">
+            Quần jeans dáng skinny chất denim co giãn, thoải mái di chuyển. Phối hợp cùng áo basic cho phong cách hiện đại.
+          </div>
+          <div class="tab-pane" id="tab-spec">
+            <table class="spec">
+              <tr><td>Chất liệu</td><td>Denim 98% cotton, 2% spandex</td></tr>
+              <tr><td>Giặt</td><td>Giặt nhẹ, không tẩy, phơi mát</td></tr>
+              <tr><td>Thương hiệu</td><td>Nessa House</td></tr>
+            </table>
+          </div>
+          <div class="tab-pane" id="tab-rev">
+            Chưa có đánh giá. Hãy là người đầu tiên đánh giá sản phẩm này!
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related -->
+    <section class="rel">
+      <h3 style="font-family:'Playfair Display',serif;margin:0 0 10px;color:#222">Sản phẩm liên quan</h3>
+      <div class="grid" id="related">
+        <div class="card">
+          <div class="thumb-rel"></div>
+          <div class="card-b">
+            <div class="title-sm">Classic Denim Blue</div>
+            <button class="btn-sm" onclick="quickAddRelated('Classic Denim Blue', 499)">Thêm nhanh</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="thumb-rel"></div>
+          <div class="card-b">
+            <div class="title-sm">High-rise Mom Jeans</div>
+            <button class="btn-sm" onclick="quickAddRelated('High-rise Mom Jeans', 699)">Thêm nhanh</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="thumb-rel"></div>
+          <div class="card-b">
+            <div class="title-sm">Straight Jeans Mist</div>
+            <button class="btn-sm" onclick="quickAddRelated('Straight Jeans Mist', 549)">Thêm nhanh</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="thumb-rel"></div>
+          <div class="card-b">
+            <div class="title-sm">Minimal Tote Bag</div>
+            <button class="btn-sm" onclick="quickAddRelated('Minimal Tote Bag', 329)">Thêm nhanh</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+const API_BASE = 'https://localhost:5001';
+
+const $ = (q, r=document)=>r.querySelector(q);
+const $$ = (q, r=document)=>[...r.querySelectorAll(q)];
+const fmtVNDk = k => k.toLocaleString('vi-VN') + '.000đ';
+const stars = r => '★'.repeat(Math.round(r||4.3)) + '☆'.repeat(5-Math.round(r||4.3));
+
+let product = null, selColor = null, selSize = null, activeVariant = null, qty = 1;
+
+function getIdFromQuery(){
+  const url = new URL(location.href);
+  const id = parseInt(url.searchParams.get('id')||'1',10);
+  return Number.isFinite(id) ? id : 1;
+}
+
+async function loadProduct(){
+  const id = getIdFromQuery();
+  const res = await fetch(`${API_BASE}/api/products/${id}`);
+  if(!res.ok) throw new Error('Load product failed');
+  const data = await res.json();
+
+  const colors = [...new Set((data.variants||[]).map(v=>v.color||'default'))];
+  const sizes  = [...new Set((data.variants||[]).map(v=>v.size||'One'))];
+  product = { id: data.id, name: data.name, rating: 4.3, colors, sizes, variants: data.variants||[] };
+
+  $('#p-name') && ($('#p-name.textContent = product.name)'));
+
+  $('#stars') && ($('#stars.textContent = stars(product.rating)'));
+
+  const c = $('#color-list'); if(c){ c.innerHTML = ''; colors.forEach(code=>{ const b=document.createElement('button'); b.className='color'; b.title=code; b.textContent=code.toUpperCase(); b.onclick=()=>{ selColor=code; refreshVariantUI(); }; c.appendChild(b); }); }
+  const s = $('#size-list'); if(s){ s.innerHTML = ''; sizes.forEach(sz=>{ const b=document.createElement('button'); b.className='size'; b.textContent=sz; b.onclick=()=>{ selSize=sz; refreshVariantUI(); }; s.appendChild(b); }); }
+
+  selColor = colors[0] || null;
+  selSize  = sizes[0]  || null;
+  refreshVariantUI();
+}
+
+function pickVariant(color, size){
+  return product.variants.find(v => (v.color||'default')===color && (v.size||'One')===size) || null;
+}
+
+function refreshVariantUI(){
+  activeVariant = (selColor && selSize) ? pickVariant(selColor, selSize) : null;
+
+  $$('#color-list .color').forEach(btn=>btn.classList.toggle('active', btn.title===selColor));
+  $$('#size-list .size').forEach(btn=>{
+    const v = pickVariant(selColor||btn.textContent, btn.textContent);
+    btn.disabled = !v || v.stock<=0;
+    btn.classList.toggle('active', btn.textContent===selSize);
+  });
+
+  if(!activeVariant || activeVariant.stock<=0){
+    const fallback = product.sizes.find(sz => { const v = pickVariant(selColor, sz); return v && v.stock>0; });
+    if(fallback){ selSize = fallback; activeVariant = pickVariant(selColor, selSize); }
+  }
+
+  if(activeVariant){
+    $('#p-price') && ($('#p-price.textContent = fmtVNDk(activeVariant.priceK)'));
+    $('#p-old') && ($('#p-old.style.display = "none"'));
+    $('#p-stock') && ($('#p-stock.textContent = "Còn: " + activeVariant.stock') );
+  }
+}
+
+function initQty(){
+  const inp = $('#qty'); if(!inp) return;
+  inp.value = qty;
+  $('#minus')?.addEventListener('click', ()=>{ qty = Math.max(1, Number(inp.value||1)-1); inp.value = qty; });
+  $('#plus')?.addEventListener('click',  ()=>{ qty = Math.max(1, Number(inp.value||1)+1); inp.value = qty; });
+  inp.addEventListener('input', ()=>{ qty = Math.max(1, Number(inp.value||1)); });
+}
+
+function updateCartBadge(){
+  const count = Number(localStorage.getItem('cartCount')||'0');
+  $('#cart-badge') && ($('#cart-badge.textContent = count)'));
+}
+
+function addToCart(){
+  if(!activeVariant){ alert('Biến thể không khả dụng.'); return; }
+  const quantity = Math.min(activeVariant.stock, Math.max(1, Number($('#qty')?.value||1)));
+  const items = JSON.parse(localStorage.getItem('cartItems')||'[]');
+  const idx = items.findIndex(x=>x.id===activeVariant.id);
+  if(idx>-1){
+    items[idx].qty = Math.min(items[idx].stock||999, (items[idx].qty||1)+quantity);
+  }else{
+    items.push({
+      id: activeVariant.id,
+      name: `${product.name} — ${(selColor||'').toUpperCase()}/${selSize||''}`,
+      price: activeVariant.priceK,
+      old: 0,
+      qty: quantity,
+      stock: activeVariant.stock,
+      sku: activeVariant.sku || ''
+    });
+  }
+  localStorage.setItem('cartItems', JSON.stringify(items));
+  const newCount = items.reduce((a,b)=>a+(b.qty||1),0);
+  localStorage.setItem('cartCount', String(newCount));
+  updateCartBadge();
+  alert('Đã thêm vào giỏ.');
+}
+
+async function boot(){
+  try{
+    updateCartBadge();
+    initQty();
+    await loadProduct();
+    $('#add')?.addEventListener('click', addToCart);
+  }catch(err){ console.error(err); alert('Không tải được chi tiết sản phẩm.'); }
+}
+boot();
+</script>
+</body>
+</html>
